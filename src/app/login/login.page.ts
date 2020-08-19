@@ -14,12 +14,12 @@ export class LoginPage implements OnInit {
 
   public mensagens_validacao = {
     email: [
-      { tipo: 'required', mensagem: 'O campo E-mail é obrigatóri!!' },
-      { tipo: 'email', mensagem: 'E-mail inválido!' }
+      { tipo: 'required', mensagem: 'O campo E-mail é obrigatório' },
+      { tipo: 'email', mensagem: 'E-mail inválido' }
     ],
     senha: [
-      { tipo: 'required', mensagem: 'O campo senha é obrigatório!'},
-      { tipo: 'minLength', mensagem: 'A senha deve ter pelo menos 6 caracteres!'}
+      { tipo: 'required', mensagem: 'O campo senha é obrigatório'},
+      { tipo: 'minlength', mensagem: 'A senha deve ter pelo menos 6 caracteres'}
     ]
   };
 
