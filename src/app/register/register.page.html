@@ -28,7 +28,7 @@
 
     <ion-item lines="none">
       <ion-label position="stacked">CPF</ion-label>
-      <ion-input formControlName="cpf" type="text" placeholder="Digite seu CPF"></ion-input>
+      <ion-input [brmasker]="{person: true}" maxLength="14" formControlName="cpf" type="text" placeholder="Digite seu CPF"></ion-input>
       <ng-container *ngFor="let erro of mensagens_validacao.cpf">
         <span class="msg-error"
           *ngIf="formRegister.get('cpf').hasError(erro.tipo) && (formRegister.get('cpf').dirty || formRegister.get('cpf').touched)">
@@ -66,7 +66,7 @@
 
     <ion-item lines="none">
       <ion-label position="stacked">Celular</ion-label>
-      <ion-input formControlName="celular" type="text" placeholder="Digite seu celular"></ion-input>
+      <ion-input [brmasker]="{phone: true}" formControlName="celular" type="text" placeholder="Digite seu celular"></ion-input>
       <ng-container *ngFor="let erro of mensagens_validacao.celular">
         <span class="msg-error"
           *ngIf="formRegister.get('celular').hasError(erro.tipo) && (formRegister.get('celular').dirty || formRegister.get('celular').touched)">
