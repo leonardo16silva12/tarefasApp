@@ -37,5 +37,31 @@ export class UsuariosService {
       return await this.armazenamentoService.salvarDados('usuarios', this.listaUsuarios);
     }
 
+    public async login(email: string, senha: string) {
+      let usuario: Usuario;
+
+      await this.buscarTodos();
+
+      const listTemp = this.listaUsuarios.filter(usuarioArmazenado => {
+        return (usuarioArmazenado.email == email && usuarioArmazenado.senha == senha);
+      }); // retorna um array;
+
+
+      if(listTemp.length > 0) {
+        usuario = listTemp.reduce(item => item);
+      }
+
+      return usuario;
+    }
+
+    public salvarUsuarioLogado(usuario: Usuario) {
+      delete usuario.senha;
+      this.armazenamentoService.salvarDados('usuarioLogado', usuario);
+    }
+
+    public async buscarUsuarioLogado() {
+      return await this.armazenamentoService.pegarDados('usuarioLogado');
+    }
+
 
 }

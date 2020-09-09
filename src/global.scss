@@ -26,6 +26,7 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 .text-bold {
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }
 
@@ -36,6 +37,7 @@
 .ion-button-light {
     --background: #fff;
     --color: var(--ion-color-success) !important;
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     margin-top: 5px;
 }
@@ -44,9 +46,44 @@ ion-input,
 ion-datetime,
 ion-select {
     color: #808080 !important;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .msg-error {
     color: #FF0000;
+    font-family: 'Montserrat', sans-serif;
     font-size: 11px;
+}
+
+.colorToast {
+    --background: #2dd36f;
+    --color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.colorAlert {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+ion-item {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+ion-input {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+ion-label {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+ion-checkbox {
+    --background-checked: #2dd36f;
+    --border-color-checked: #2dd36f;
 }
