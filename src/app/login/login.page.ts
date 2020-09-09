@@ -48,10 +48,9 @@ export class LoginPage implements OnInit {
 
   async ionViewWillEnter(){
    const usuarioLogado = await this.usuarioService.buscarUsuarioLogado();
-   if(usuarioLogado.manterLogado){
+   if(usuarioLogado && usuarioLogado.manterLogado){
      this.router.navigateByUrl('/home');
      this.presentToast();
-     this.presentAlert('Aviso', 'Usuário ou senha inválidos!');
    }
   }
 
@@ -72,6 +71,8 @@ export class LoginPage implements OnInit {
     } else {
       this.presentAlert('Erro', 'Formulário inválido, confira os campos!');
     }
+
+    this.formLogin.reset();
   }
 
   async presentToast() {

@@ -42,4 +42,20 @@ export class ArmazenamentoService {
       return null;
     }
   }
+
+  public excluirDados(chave: string){
+    if(chave.trim().length > 0) {
+      return this.storage.remove(chave)
+      .then(() => {
+        console.log('Dados excluídos com sucesso!');
+        return true;
+      })
+      .catch(erro => {
+        console.log('Erro ao excluir os dados', erro);
+        return false;
+      });
+  } else {
+    return false;
+  }
+  }
 }

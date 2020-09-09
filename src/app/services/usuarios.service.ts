@@ -54,6 +54,13 @@ export class UsuariosService {
       return usuario;
     }
 
+    public async logout(usuario: Usuario) {
+      
+      await this.buscarUsuarioLogado();
+
+      return await this.armazenamentoService.excluirDados('usuarioLogado');
+    }
+
     public salvarUsuarioLogado(usuario: Usuario) {
       delete usuario.senha;
       this.armazenamentoService.salvarDados('usuarioLogado', usuario);
