@@ -54,10 +54,7 @@ export class UsuariosService {
       return usuario;
     }
 
-    public async logout(usuario: Usuario) {
-      
-      await this.buscarUsuarioLogado();
-
+    public async logout() {
       return await this.armazenamentoService.excluirDados('usuarioLogado');
     }
 

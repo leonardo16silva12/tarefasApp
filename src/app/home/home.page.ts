@@ -19,20 +19,13 @@ export class HomePage {
 
   ) {}
 
-
-
-  async signOut(usuarioLogado: Usuario) {
-
-    const usuario = await this.usuarioService.logout(usuarioLogado);
-
-    if(usuario){
+  async ionViewWillEnter(){
+    const usuarioLogado = await this.usuarioService.buscarUsuarioLogado();
+    if(!usuarioLogado){
       this.router.navigateByUrl('/login');
-      this.presentToast();
-    } else{
-      return false;
     }
+   }
 
-  }
 
   async presentToast() {
     const toast = await this.toastController.create({
@@ -43,13 +36,27 @@ export class HomePage {
     toast.present();
   }
 
-  async presentAlert(titulo: string, mensagem: string) {
-    const alert = await this.alertController.create({
-      cssClass: 'colorAlert',
-      header: titulo,
-      message: mensagem,
-      buttons: ['OK'],
-    });
-    await alert.present();
+
+async exibirAlertLogout() {
+  const alert = await this.alertController.create({
+    cssClass: 'colorAlert',
+    header: 'Logout',
+    message: 'Tem certeza que deseja sair?',
+    buttons: [
+      {
+        text: 'Cancelar',
+        role: 'cancel',
+      }, {
+        text: 'Ok',
+        handler: () => {
+          this.usuarioService.logout();
+          this.router.navigateByUrl('/login'); 
+        }
+      }
+    ]
+  });
+
+  await alert.present();
 }
+
 }
