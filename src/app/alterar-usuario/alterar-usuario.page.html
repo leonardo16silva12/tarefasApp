@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons>
+      <ion-back-button defaultHref="settings"></ion-back-button>
+      <ion-title>Alterar dados</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="formAlterar">
+
+    <ion-item lines="none">
+      <ion-label position="stacked" color="success">Nome</ion-label>
+      <ion-input formControlName="nome" type="text" placeholder="Digite seu nome"></ion-input>
+      <ng-container *ngFor="let erro of mensagens_validacao.nome">
+        <span class="msg-error"
+          *ngIf="formAlterar.get('nome').hasError(erro.tipo) && (formAlterar.get('nome').dirty || formAlterar.get('nome').touched)">
+          {{erro.mensagem}}
+        </span>
+      </ng-container>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked" color="success">CPF</ion-label>
+      <ion-input [brmasker]="{person: true}" maxLength="14" formControlName="cpf" type="text" placeholder="Digite seu CPF" readonly></ion-input>
+      <ng-container *ngFor="let erro of mensagens_validacao.cpf">
+        <span class="msg-error"
+          *ngIf="formAlterar.get('cpf').hasError(erro.tipo) && (formAlterar.get('cpf').dirty || formAlterar.get('cpf').touched)">
+          {{erro.mensagem}}
+        </span>
+      </ng-container>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked" color="success">Data de Nascimento</ion-label>
+      <ion-datetime formControlName="nascimento" displayFormat="DD/MM/YYYY" cancelText="Cancelar" doneText="Ok" placeholder="Selecione">
+      </ion-datetime>
+      <ng-container *ngFor="let erro of mensagens_validacao.nascimento">
+        <span class="msg-error"
+          *ngIf="formAlterar.get('nascimento').hasError(erro.tipo) && (formAlterar.get('nascimento').dirty || formAlterar.get('nascimento').touched)">
+          {{erro.mensagem}}
+        </span>
+      </ng-container>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked" color="success">Gênero</ion-label>
+      <ion-select formControlName="genero" placeholder="Selecione" cancelText="Cancelar">
+        <ion-select-option value="F">Feminino</ion-select-option>
+        <ion-select-option value="M">Masculino</ion-select-option>
+        <ion-select-option value="O">Outro</ion-select-option>
+      </ion-select>
+      <ng-container *ngFor="let erro of mensagens_validacao.genero">
+        <span class="msg-error"
+          *ngIf="formAlterar.get('genero').hasError(erro.tipo) && (formAlterar.get('genero').dirty || formAlterar.get('genero').touched)">
+          {{erro.mensagem}}
+        </span>
+      </ng-container>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked" color="success">Celular</ion-label>
+      <ion-input [brmasker]="{phone: true}" formControlName="celular" type="text" placeholder="Digite seu celular"></ion-input>
+      <ng-container *ngFor="let erro of mensagens_validacao.celular">
+        <span class="msg-error"
+          *ngIf="formAlterar.get('celular').hasError(erro.tipo) && (formAlterar.get('celular').dirty || formAlterar.get('celular').touched)">
+          {{erro.mensagem}}
+        </span>
+      </ng-container>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked" color="success">E-mail</ion-label>
+      <ion-input formControlName="email" type="email" placeholder="Digite seu E-mail" readonly></ion-input>
+      <ng-container *ngFor="let erro of mensagens_validacao.email">
+        <span class="msg-error"
+          *ngIf="formAlterar.get('email').hasError(erro.tipo) && (formAlterar.get('email').dirty || formAlterar.get('email').touched)">
+          {{erro.mensagem}}
+        </span>
+      </ng-container>
+    </ion-item>
+
+    <br>
+
+    <ion-button expand="full" color="success" (click)="salvar()">
+      Salvar
+    </ion-button>
+
+    <br>
+
+    <ion-button expand="full" fill="clear" color="success" routerLink="/settings">
+      Voltar
+    </ion-button>
+
+  </form>
+
+</ion-content>

@@ -101,7 +101,7 @@ export class RegisterPage implements OnInit {
       }
 
     } else {
-      this.exibirAlerta('Aviso', 'Formulário Inválido <br/>Verifique os campos do seu formulário!');
+      this.exibirAlerta('Aviso', 'Formulário Inválido <br/>Verifique os campos!');
     }
   }
 

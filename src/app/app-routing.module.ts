@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   },
+  {
+    path: 'alterar-usuario',
+    loadChildren: () => import('./alterar-usuario/alterar-usuario.module').then( m => m.AlterarUsuarioPageModule)
+  },
 ];
 
 @NgModule({
